@@ -34,10 +34,10 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card border-light mb-3">
-          <div class="card-body">
-            <h4 class="card-title">Current Weather on Mars</h4>
-            <p class="card-text">{{ mars.mars_weather }}</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>Current Weather on Mars</h4>
+            <p>{{ mars.mars_weather }}</p>
           </div>
         </div>
         <br>
@@ -52,31 +52,31 @@
     <div class="row">
       <h2 class="text-center">Mars Hemispheres</h2>
       <div class="col-md-6">
-        <div class="card">
+        <div class="panel panel-default">
           <img src="{{ mars.mars_hemispheres[3].img_url }}" class="card-img-top img-responsive" alt=mars.mars_hemispheres[3].title>
-          <div class="card-body">
-            <h3 class="card-text">{{ mars.mars_hemispheres[3].title }}</h3>
+          <div class="panel-body">
+            <h3>{{ mars.mars_hemispheres[3].title }}</h3>
           </div>
         </div>
-        <div class="card">
+        <div class="panel panel-default">
           <img src="{{ mars.mars_hemispheres[1].img_url }}" class="card-img-top img-responsive" alt=mars.mars_hemispheres[1].title>
-          <div class="card-body">
-            <h3 class="card-text">{{ mars.mars_hemispheres[1].title }}</h3>
+          <div class="panel-body">
+            <h3>{{ mars.mars_hemispheres[1].title }}</h3>
           </div>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="card">
+        <div class="panel panel-default">
           <img src="{{ mars.mars_hemispheres[0].img_url }}" class="card-img-top img-responsive" alt=mars.mars_hemispheres[0].title>
-          <div class="card-body">
-            <h3 class="card-text">{{ mars.mars_hemispheres[0].title }}</h3>
+          <div class="panel-body">
+            <h3>{{ mars.mars_hemispheres[0].title }}</h3>
           </div>
         </div>
-        <div class="card">
+        <div class="panel panel-default">
           <img src="{{ mars.mars_hemispheres[2].img_url }}" class="card-img-top img-responsive" alt=mars.mars_hemispheres[2].title>
-          <div class="card-body">
-            <h3 class="card-text">{{ mars.mars_hemispheres[2].title }}</h3>
+          <div class="panel-body">
+            <h3>{{ mars.mars_hemispheres[2].title }}</h3>
           </div>
         </div>
       </div>
