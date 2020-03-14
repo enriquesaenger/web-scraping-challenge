@@ -5,11 +5,11 @@
 
 def scrape():
     import time
-
-    import pandas as pd
-    from bs4 import BeautifulSoup as bs
-
     from splinter import Browser
+    import re
+    from bs4 import BeautifulSoup as bs
+    import pandas as pd
+
 
     # In[ ]:
 
@@ -18,7 +18,7 @@ def scrape():
     def init_browser():
         # @NOTE: Replace the path with your actual path to the chromedriver
         executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-        return Browser("chrome", **executable_path, headless=False)
+        return Browser("chrome", **executable_path, headless=True)
 
 
     # In[ ]:
@@ -63,7 +63,7 @@ def scrape():
     news_p = soup.find_all("div", "article_teaser_body")[0].text
 
     # add the data to the dictionary
-    mars_data.update({"mars news": {"news title": news_title, "news_p": news_p}})
+    mars_data.update({"news_title": news_title, "news_p": news_p})
 
 
     # ### JPL Mars Space Images - Featured Image
@@ -83,7 +83,7 @@ def scrape():
     featured_image_url = base_url + relative_image_path
 
     # add data to the dictionary
-    mars_data.update({"featured image url": featured_image_url})
+    mars_data.update({"featured_image_url": featured_image_url})
 
 
     # ### Mars Weather
@@ -96,10 +96,10 @@ def scrape():
     soup = soupify(3)
 
     # find the text of the latest tweet
-    mars_weather = soup.find_all('span')[42].text
+    mars_weather = soup.find(text=re.compile("InSight sol"))
 
     # add data to the dictionary
-    mars_data.update({"mars weather": mars_weather})
+    mars_data.update({"mars_weather": mars_weather})
 
 
 
@@ -119,9 +119,11 @@ def scrape():
     df.columns = ['Statistic', 'Value']
     # convert df to html
     mars_planet_profile = df.to_html(index=False)
+    # create html file
+    df.to_html('table.html')
 
     # add data to the dictionary
-    mars_data.update({"planet profile table": mars_planet_profile})
+    mars_data.update({"mars_planet_profile": mars_planet_profile})
 
 
     # ### Mars Hemispheres
@@ -154,7 +156,7 @@ def scrape():
         hemisphere_image_urls.append(link_dict)
 
     # add data to the dictionary
-    mars_data.update({"mars hemispheres": hemisphere_image_urls})
+    mars_data.update({"mars_hemispheres": hemisphere_image_urls})
 
 
     # In[ ]:
